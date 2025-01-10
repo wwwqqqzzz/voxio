@@ -1,6 +1,14 @@
-import { clerkMiddleware } from "@clerk/nextjs/server";
+import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
 
-export default clerkMiddleware();
+// 定义公共路由
+const isPublicRoute = createRouteMatcher(['/api/uploadthing']);
+
+export default clerkMiddleware(async(auth, req) => {
+  if (!isPublicRoute(req)) {
+    // 保护非公共路由
+    await auth.protect()
+  }
+});
 
 export const config = {
   matcher: [
