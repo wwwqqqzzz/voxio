@@ -3,10 +3,10 @@ import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
 // 定义公共路由
 const isPublicRoute = createRouteMatcher(['/api/uploadthing']);
 
-export default clerkMiddleware(async(auth, req) => {
+export default clerkMiddleware(async (auth, req) => {
+  console.log("Request URL:", req.url); // 打印请求 URL
   if (!isPublicRoute(req)) {
-    // 保护非公共路由
-    await auth.protect()
+    await auth.protect();
   }
 });
 

@@ -1,13 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton
-} from '@clerk/nextjs';
+import { ClerkProvider } from '@clerk/nextjs';
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { cn } from "@/lib/utils";
 
@@ -26,15 +20,16 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
-        <body className={cn(
-          inter.className,
-          "bg-white dark:bg-[#313338]"
-          )}>
+        <body 
+          className={cn(
+            inter.className,
+            "bg-white dark:bg-[#313338]"
+          )}
+          suppressHydrationWarning
+        >
           <ThemeProvider
             attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
+            defaultTheme="dark"
             storageKey="voxio-theme"
           >
             {children}
