@@ -11,7 +11,7 @@ import {
 interface ActionTooltipProps {
     label: string;
     children: React.ReactNode;
-    side?: "top" | "bottom" | "left" | "right";
+    side?: "top" | "right" | "bottom" | "left" ;
     align?: "start" | "center" | "end";
 }
 
@@ -25,7 +25,7 @@ export const ActionTooltip = ({
         <TooltipProvider>
             <Tooltip delayDuration={50}>
                 <TooltipTrigger asChild>
-                    {children}
+                    {children} 
                 </TooltipTrigger>
                 <TooltipContent side={side} align={align}>
                     <p className="font-semibold text-xs capitalize">
